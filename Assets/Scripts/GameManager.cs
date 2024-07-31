@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    #region 싱글톤
     private static GameManager _instance;
 
     public static GameManager Instance
@@ -36,8 +37,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject); // 이미 인스턴스가 존재하면 이 객체를 파괴
         }
     }
+    #endregion
 
     [Header("Start")]
+    [SerializeField] private GameObject start_Page;
     [SerializeField] private Button game_Start;
     [SerializeField] private Button game_Quit;
     [SerializeField] private Button option;
@@ -46,52 +49,32 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button back_Btn;
     [SerializeField] private GameObject option_window;
 
-    private void Start()
-    {
-        game_Start.onClick.AddListener(OnClick_Game_Start);
+    [Header("Stage")]
+    public GameObject stage01;
 
-        option.onClick.AddListener(OnClick_Option);
-        back_Btn.onClick.AddListener(OnClick_Option);
 
-        game_Quit.onClick.AddListener(OnClick_Game_Quit);
-    }
 
     private void Update()
     {
-
-        Game_Play();
-    }
-
-    private void Game_Play()
-    {
-        if (SceneManager.GetActiveScene().name == "Game")
-        {
-            Debug.Log("Game_Scene이다");
-        }
+       
     }
 
     public void OnClick_Game_Start()
     {
-        SceneManager.LoadScene("Game");
+        start_Page.gameObject.SetActive(false);
+        stage01.gameObject.SetActive(true);
     }
 
     public void OnClick_Option()
     {
-        if (!option.gameObject.activeSelf)
-        {
-            option_window.gameObject.SetActive(true);
-        }
-        else 
-        {
-            option_window.gameObject.SetActive(false);
-        }
-        
+       option_window.gameObject.SetActive(true);
     }
 
     public void OnClick_Option_Back()
     {
-        SceneManager.LoadScene("Start");
+       option_window.gameObject.SetActive(false);
     }
+
 
     public void OnClick_Game_Quit()
     {
