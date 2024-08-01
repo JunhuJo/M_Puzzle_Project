@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -38,6 +37,7 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
+    [SerializeField] private PlayManager playManager;
 
     [Header("Start")]
     [SerializeField] private GameObject start_Page;
@@ -49,20 +49,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button back_Btn;
     [SerializeField] private GameObject option_window;
 
-    [Header("Stage")]
-    public GameObject stage01;
-
-
-
-    private void Update()
-    {
-       
-    }
 
     public void OnClick_Game_Start()
     {
         start_Page.gameObject.SetActive(false);
-        stage01.gameObject.SetActive(true);
+        playManager.Stages[0].gameObject.SetActive(true);
     }
 
     public void OnClick_Option()
@@ -74,7 +65,6 @@ public class GameManager : MonoBehaviour
     {
        option_window.gameObject.SetActive(false);
     }
-
 
     public void OnClick_Game_Quit()
     {
