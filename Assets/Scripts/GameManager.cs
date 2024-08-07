@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -37,38 +38,22 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-    [SerializeField] private PlayManager playManager;
 
-    [Header("Start")]
-    [SerializeField] private GameObject start_Page;
-    [SerializeField] private Button game_Start;
-    [SerializeField] private Button game_Quit;
-    [SerializeField] private Button option;
+    [SerializeField] private Slider _audio_Bar;
+    private AudioSource _audioSource;
 
-    [Header("Option")]
-    [SerializeField] private Button back_Btn;
-    [SerializeField] private GameObject option_window;
-
-
-    public void OnClick_Game_Start()
+    private void Start()
     {
-        start_Page.gameObject.SetActive(false);
-        playManager.Stages[0].gameObject.SetActive(true);
+        _audioSource = GetComponent<AudioSource>();
     }
 
-    public void OnClick_Option()
+    private void Update()
     {
-       option_window.gameObject.SetActive(true);
+        Set_Volume();
     }
 
-    public void OnClick_Option_Back()
+    private void Set_Volume()
     {
-       option_window.gameObject.SetActive(false);
-    }
-
-    public void OnClick_Game_Quit()
-    {
-        Debug.Log("Game_Quit");
-        Application.Quit(); 
+        _audioSource.volume = _audio_Bar.value;
     }
 }
