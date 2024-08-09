@@ -30,11 +30,11 @@ public class GameManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject); // 씬이 로드될 때 파괴되지 않도록 설정
+            DontDestroyOnLoad(gameObject);
         }
         else if (_instance != this)
         {
-            Destroy(gameObject); // 이미 인스턴스가 존재하면 이 객체를 파괴
+            Destroy(gameObject);
         }
     }
     #endregion

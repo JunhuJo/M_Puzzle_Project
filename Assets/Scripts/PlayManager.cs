@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PlayManager : MonoBehaviour
 {
     public Slider audio_Bar;
-
+    //private AllStageManager allStageManager;
     [Header("Start_Page_Back")]
     [SerializeField] private Button start_Page_Back_Btn;
     [SerializeField] private Button start_Page_Back_Go_Btn;
@@ -16,8 +16,6 @@ public class PlayManager : MonoBehaviour
     [SerializeField] private Button option_close_Btn;
     [SerializeField] private GameObject option_Window;
     
-    
-
     private void Start()
     {
         Set_Btn();
@@ -64,4 +62,11 @@ public class PlayManager : MonoBehaviour
         GameManager.Instance.audio_Swich = true;
         SceneManager.LoadScene("Start");
     }
+
+    //private void Reset_Stage()
+    //{
+    //    GameObject allgamemanager = GameObject.Find("Play_Manager");
+    //    allStageManager = allgamemanager.GetComponent<AllStageManager>();
+    //    allStageManager.stage_Num = 0;
+    //}
 }

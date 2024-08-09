@@ -3,18 +3,22 @@ using UnityEngine.UI;
 
 public class Stage01Manager : MonoBehaviour
 {
+    [Header("Stage01_Seting")]
     [SerializeField] private Button light_Swich_Btn;
     [SerializeField] private GameObject[] light_obj;
+    [SerializeField] private AllStageManager all_stages;
+
     private Image back_Ground;
     private int count = 0;
-    [SerializeField] private AllStageManager all_stages;
-   
-
+    
     private void OnEnable()
     {
-        GameObject allStages = GameObject.Find("Stage_Field");
-        AllStageManager all_Stages = GetComponent<AllStageManager>();
-        all_stages = all_Stages;
+        if (all_stages == null)
+        {
+            GameObject allmanager = GameObject.Find("Play_Manager");
+            AllStageManager all_Stage_Manager = allmanager.GetComponent<AllStageManager>();
+            all_stages = all_Stage_Manager;
+        }
 
         GameObject background = GameObject.Find("Back_Ground");
         Image back_ground = background.GetComponent<Image>();
