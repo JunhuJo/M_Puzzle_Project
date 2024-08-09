@@ -5,12 +5,17 @@ using UnityEngine.UI;
 public class StartManager : MonoBehaviour
 {
     private GameManager _gameManager;
+
+    //Audio_Bar
+    public Slider _audio_Bar;
+
     //Start
     private Button _start_Btn;
+
     //Option
     private Button _option_Btn;
     [SerializeField] private GameObject _option_window;
-    
+
     //Quit
     private Button _quit_Btn;
 
@@ -39,13 +44,13 @@ public class StartManager : MonoBehaviour
         _quit_Btn.onClick.AddListener(OnClick_Game_Quit);
     }
 
-    public void OnClick_Game_Start()
+    private void OnClick_Game_Start()
     {
         Debug.Log("Start_Btn");
         SceneManager.LoadScene("Game");
     }
 
-    public void OnClick_Option()
+    private void OnClick_Option()
     {
         Debug.Log("Option_Btn");
         
@@ -62,7 +67,7 @@ public class StartManager : MonoBehaviour
         }
     }
 
-    public void OnClick_Game_Quit()
+    private void OnClick_Game_Quit()
     {
         Debug.Log("Game_Quit");
         Application.Quit();

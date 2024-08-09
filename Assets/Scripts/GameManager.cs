@@ -39,12 +39,17 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] private Slider _audio_Bar;
+    public bool audio_Swich = false;
+    
+    [SerializeField] private Slider main_Audio_Bar;
+    
     private AudioSource _audioSource;
+   
 
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        Set_Start_Volume();
     }
 
     private void Update()
@@ -52,8 +57,33 @@ public class GameManager : MonoBehaviour
         Set_Volume();
     }
 
+    //게임 시작 초기 볼륨 세팅
+    private void Set_Start_Volume()
+    {
+        GameObject startmanager = GameObject.Find("Start_Manager");
+        StartManager start_Manager = startmanager.GetComponent<StartManager>();
+        main_Audio_Bar = start_Manager._audio_Bar;
+    }
+
     private void Set_Volume()
     {
-        _audioSource.volume = _audio_Bar.value;
+        _audioSource.volume = main_Audio_Bar.value;
+
+        if (SceneManager.GetActiveScene().name == "Game")
+        {
+            GameObject playManager = GameObject.Find("Play_Manager");
+            PlayManager play_manager = playManager.GetComponent<PlayManager>();
+            play_manager.audio_Bar.value = _audioSource.volume;
+            main_Audio_Bar = play_manager.audio_Bar;
+        }
+        else if (SceneManager.GetActiveScene().name == "Start" && audio_Swich)
+        {
+            Debug.Log("볼륨 전환");
+            GameObject startManager = GameObject.Find("Start_Manager");
+            StartManager start_Manager = startManager.GetComponent<StartManager>();
+            start_Manager._audio_Bar.value = _audioSource.volume;
+            main_Audio_Bar = start_Manager._audio_Bar;
+            audio_Swich = false;
+        }
     }
 }

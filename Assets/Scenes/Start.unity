@@ -273,7 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6ca257332fd484389ec22a8d6f8857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audio_Bar: {fileID: 389735255}
+  audio_Swich: 0
+  main_Audio_Bar: {fileID: 389735255}
 --- !u!82 &38678984
 AudioSource:
   m_ObjectHideFlags: 0
@@ -887,6 +888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c5ebb4a9e061994f89c1a28b4e965d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audio_Bar: {fileID: 389735255}
   _option_window: {fileID: 766163446}
 --- !u!1 &519989473
 GameObject:
@@ -1152,7 +1154,7 @@ Canvas:
   m_GameObject: {fileID: 657284817}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 2006163307}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
